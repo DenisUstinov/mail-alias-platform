@@ -1,0 +1,23 @@
+name: "Bug report"
+description: "Report a bug in the project"
+title: "[BUG] "
+labels: ["bug"]
+assignees: ["DenisUstinov"]
+body:
+  - type: input
+    id: summary
+    attributes:
+      label: "Summary"
+      description: "Brief description of the bug"
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps to reproduce"
+  - type: input
+    id: expected
+    attributes:
+      label: "Expected result"
+  - type: input
+    id: actual
+    attributes:
+      label: "Actual result"

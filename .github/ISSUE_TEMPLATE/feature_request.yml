@@ -1,0 +1,15 @@
+name: "Feature request"
+description: "Request a new feature or improvement"
+title: "[FEAT] "
+labels: ["enhancement"]
+assignees: ["DenisUstinov"]
+body:
+  - type: input
+    id: summary
+    attributes:
+      label: "Summary"
+      description: "Brief description of the feature"
+  - type: textarea
+    id: solution
+    attributes:
+      label: "Proposed solution"

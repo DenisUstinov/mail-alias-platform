@@ -1,0 +1,11 @@
+name: "Documentation"
+description: "Update or add documentation"
+title: "[DOC] "
+labels: ["docs"]
+assignees: ["DenisUstinov"]
+body:
+  - type: input
+    id: summary
+    attributes:
+      label: "Summary"
+      description: "What was changed or added"

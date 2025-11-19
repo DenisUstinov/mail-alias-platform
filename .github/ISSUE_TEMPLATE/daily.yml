@@ -1,0 +1,24 @@
+name: Daily Stand-up
+description: Daily report
+title: "YYYY-MM-DD"
+labels: ["daily"]
+assignees: ["DenisUstinov"]
+
+body:
+  - type: textarea
+    id: yesterday
+    attributes:
+      label: "Что я сделал вчера?"
+      placeholder: "Кратко 1–3 результата. Пример: «Завершил реализацию API /aliases, сделал миграцию БД, проверил почту»"
+
+  - type: textarea
+    id: today
+    attributes:
+      label: "Что планирую сделать сегодня?"
+      placeholder: "Коротко 1–3 задачи + приоритет. Пример: «Настроить Docker Compose (≈2ч); начать разработку POST /alias»"
+
+  - type: textarea
+    id: blockers
+    attributes:
+      label: "Какие препятствия или блокеры у меня есть?"
+      placeholder: "Опиши проблему и что нужно для разблокировки. Пример: «Не запускается контейнер БД — нужна помощь»"

@@ -5,7 +5,7 @@ Describe what you changed / added / fixed.
 Briefly explain the reason — bug, new feature, or refactoring.
 
 ## Related Issues
-- Issue #<number> — short explanation (if applicable)
+- Issue #<number>
 
 ## How to Test
 1. …

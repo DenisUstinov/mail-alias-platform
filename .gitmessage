@@ -1,0 +1,25 @@
+# <type>(<scope>): <short summary> [optional ! for breaking change]
+# <type> - feat | fix | docs | style | refactor | perf | test | build | ci | chore | revert
+# <scope> - area of change (auth, api, db, core, infra, tests, deps, config)
+# <summary> - short description (lowercase, no period at the end)
+
+<type>(<scope>)[!]: <short summary>
+
+# BODY — optional
+# Detailed description of changes (what and why was changed)
+# Use complete sentences, start each sentence on a new line
+# Line breaks approximately every 72 characters
+
+<body>
+# Example:
+# Implemented GET /users/{id}/profile to fetch profile data.
+# Added validation with Pydantic.
+# Updated OpenAPI schema.
+
+# FOOTER — optional
+# References to issues, breaking changes, and other commits
+
+<footer>
+# Example:
+# Closes #42
+# BREAKING CHANGE: removed old /login endpoint

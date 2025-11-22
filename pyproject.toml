@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "mail-alias-platform"
+version = "0.1.0"
+description = "Platform for managing temporary email addresses."
+authors = ["Denis Ustinov 83418606+DenisUstinov@users.noreply.github.com"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0"
+ruff = "^0.14"
+
+[build-system]
+requires = ["poetry-core>=1.6.0"]
+build-backend = "poetry.core.masonry.api"

@@ -43,7 +43,7 @@ jobs:
         run: poetry run mypy .
 
       - name: Run tests
-        run: poetry run pytest --maxfail=1 --disable-warnings -q
+        run: PYTHONPATH=. poetry run pytest --maxfail=1 --disable-warnings -q
 
   build-docker:
     runs-on: ubuntu-latest

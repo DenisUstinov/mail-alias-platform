@@ -1,6 +1,6 @@
 services:
   api:
     volumes:
-      - ./api:/app
+      - ./services/api:/app
     environment:
       - PYTHONUNBUFFERED=1

@@ -14,9 +14,9 @@ jobs:
       postgres:
         image: postgres:15
         env:
-          POSTGRES_USER: postgres # CHANGES FOR LINT/TYPE CHECK: временные значения
-          POSTGRES_PASSWORD: postgres # CHANGES FOR LINT/TYPE CHECK
-          POSTGRES_DB: test_db # CHANGES FOR LINT/TYPE CHECK
+          POSTGRES_USER: postgres  # CHANGES FOR LINT/TYPE CHECK: временные значения
+          POSTGRES_PASSWORD: postgres  # CHANGES FOR LINT/TYPE CHECK
+          POSTGRES_DB: test_db  # CHANGES FOR LINT/TYPE CHECK
         # CHANGES FOR LINT/TYPE CHECK: заглушка, чтобы не проверять доступность
         options: >-
           --health-cmd="exit 0"

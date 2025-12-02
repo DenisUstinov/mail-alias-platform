@@ -10,17 +10,15 @@ jobs:
   lint-and-test:
     runs-on: ubuntu-latest
     services:
-      # TEMP: заглушка Postgres, чтобы CI не падал из-за секретов
       postgres:
         image: postgres:15
         env:
-          POSTGRES_USER: postgres  # CHANGES FOR LINT/TYPE CHECK: временные значения
-          POSTGRES_PASSWORD: postgres  # CHANGES FOR LINT/TYPE CHECK
-          POSTGRES_DB: test_db  # CHANGES FOR LINT/TYPE CHECK
-        # CHANGES FOR LINT/TYPE CHECK: заглушка, чтобы не проверять доступность
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         options: >-
-          --health-cmd="exit 0"
-          --health-interval=10s --health-timeout=5s --health-retries=1
+          --health-cmd="pg_isready -U ${{ secrets.POSTGRES_USER }}"
+          --health-interval=10s --health-timeout=5s --health-retries=5
 
     steps:
       - name: Checkout repo

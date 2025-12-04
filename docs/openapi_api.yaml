@@ -1,0 +1,121 @@
+openapi: "3.2.0"
+info:
+  title: "Mail Alias Platform API"
+  version: "0.1.0"
+
+servers:
+  - url: "http://localhost:8000/v1"
+
+paths:
+  /aliases:
+    get:
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: "List of aliases"
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - items
+                  - total
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                        - alias_id
+                        - local_part
+                        - email
+                        - status
+                      properties:
+                        alias_id:
+                          type: integer
+                        local_part:
+                          type: string
+                        email:
+                          type: string
+                        status:
+                          type: string
+                          enum:
+                            - pending
+                            - active
+                            - error
+                            - deleting
+                            - deleted
+                  total:
+                    type: integer
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+    post:
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - local_part
+              properties:
+                local_part:
+                  type: string
+                  pattern: "^[A-Za-z0-9._%+-]{1,64}$"
+      parameters:
+        - name: Idempotency-Key
+          in: header
+          required: false
+          schema:
+            type: string
+      responses:
+        "201":
+          description: "Alias created"
+        "202":
+          description: "Alias creation queued"
+        "400":
+          $ref: "#/components/responses/BadRequestError"
+        "409":
+          $ref: "#/components/responses/ConflictError"
+
+  /aliases/{alias_id}:
+    delete:
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: alias_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "202":
+          description: "Deletion initiated"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "403":
+          $ref: "#/components/responses/ForbiddenError"
+
+components:
+  responses:
+    UnauthorizedError:
+      description: "Unauthorized"
+    BadRequestError:
+      description: "Bad request"
+    ConflictError:
+      description: "Conflict — alias already exists"
+    NotFoundError:
+      description: "Not Found"
+    ForbiddenError:
+      description: "Forbidden"
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
